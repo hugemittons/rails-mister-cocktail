@@ -45,7 +45,7 @@ class DosesController < ApplicationController
   # DELETE /doses/1
   def destroy
     @dose.destroy
-    redirect_to dose_path, notice: 'Dose was successfully destroyed.'
+    redirect_to cocktail_path(@dose.cocktail_id), notice: 'Dose was successfully destroyed.'
   end
 
   private
