@@ -12,6 +12,7 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/new
   def new
+    @dose = Dose.find(params[:dose_id])
     @ingredient = Ingredient.new
   end
 
@@ -21,6 +22,7 @@ class IngredientsController < ApplicationController
 
   # POST /ingredients
   def create
+    @dose = Dose.find(params[:dose_id])
     @ingredient = Ingredient.new(ingredient_params)
 
     if @ingredient.save
