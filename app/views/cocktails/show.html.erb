@@ -1,20 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-  <h2><%= @cocktail.name %></h2>
-
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-  <p>- - - - - - - - - - - - - - - -</p>
-  <h4>Ingredients</h4>
-  <ul>
-  <% @cocktail.doses.each do |dose| %>
-  <li><%= dose.description %> | <%= link_to 'x', dose_path(dose), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  <% end %>
-  </ul>
-  <p>- - - - - - - - - - - - - - - -</p>
-  <h4>Add dose</h4>
-  <%= render 'dose_form', dose: @dose %>
 
 
-<p>- - - - - - - - - - - - - - - -</p>
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %><br />
-<%= link_to 'Back to Cocktails', cocktails_path %>
+<div class="fullspan" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photo, crop: :fill, effect: "blur:1000" %>');">
+
+
+  <div class="container">
+  <p id="notice"><%= notice %></p>
+    <div class="card">
+      <h2><%= @cocktail.name %></h2>
+
+      <div class="rounded ontop"><%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %></div>
+      <p>- - - - - - - - - - - - - - - -</p>
+      <h4>Ingredients</h4>
+      <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li><%= dose.description %> of <%= dose.ingredient.name %> <%= link_to 'x', dose_path(dose), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <% end %>
+      </ul>
+      <p>- - - - - - - - - - - - - - - -</p>
+      <h4>Add dose</h4>
+      <%= render 'dose_form', dose: @dose %>
+
+
+      <p>- - - - - - - - - - - - - - - -</p>
+      <%= link_to 'Edit', edit_cocktail_path(@cocktail) %><br />
+      <%= link_to 'Back to Cocktails', cocktails_path %>
+  </div>
+</div>
+
